@@ -1,0 +1,4 @@
+The Generative AI Explorer - Vertex Quest is a collection of labs on how to use Generative AI on Google Cloud. Through the labs, you will learn about how to use the models in the Vertex AI PaLM API family, including text-bison, chat-bison, and textembedding-gecko. You will also learn about prompt design, best practices, and how it can be used for ideation, text classification, text extraction, text summarization, and more. You will also learn how to tune a foundation model by training it via Vertex AI custom training and deploy it to a Vertex AI endpoint.
+When you complete this course, you can earn the badge displayed here! View all the badges you have earned by visiting your profile page. Boost your cloud career by showing the world the skills you have developed!
+
+https://www.cloudskillsboost.google/course_templates/723
