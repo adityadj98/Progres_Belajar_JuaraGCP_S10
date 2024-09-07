@@ -1,0 +1,72 @@
+Make an entity analysis request
+G cloud command
+gcloud ml language analyze-entities --content="Michelangelo Caravaggio, Italian painter, is known for 'The Calling of Saint Matthew'." > result.json
+
+cat result.json
+
+result :\{
+  "entities": [
+    {
+      "name": "Michelangelo Caravaggio",
+      "type": "PERSON",
+      "metadata": {
+        "wikipedia_url": "http://en.wikipedia.org/wiki/Caravaggio",
+        "mid": "/m/020bg"
+      },
+      "salience": 0.83047235,
+      "mentions": [
+        {
+          "text": {
+            "content": "Michelangelo Caravaggio",
+            "beginOffset": 0
+          },
+          "type": "PROPER"
+        },
+        {
+          "text": {
+            "content": "painter",
+            "beginOffset": 33
+          },
+          "type": "COMMON"
+        }
+      ]
+    },
+    {
+      "name": "Italian",
+      "type": "LOCATION",
+      "metadata": {
+        "mid": "/m/03rjj",
+        "wikipedia_url": "http://en.wikipedia.org/wiki/Italy"
+      },
+      "salience": 0.13870546,
+      "mentions": [
+        {
+          "text": {
+            "content": "Italian",
+            "beginOffset": 25
+          },
+          "type": "PROPER"
+        }
+      ]
+    },
+    {
+      "name": "The Calling of Saint Matthew",
+      "type": "EVENT",
+      "metadata": {
+        "mid": "/m/085_p7",
+        "wikipedia_url": "http://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)"
+      },
+      "salience": 0.030822212,
+      "mentions": [
+        {
+          "text": {
+            "content": "The Calling of Saint Matthew",
+            "beginOffset": 69
+          },
+          "type": "PROPER"
+        }
+      ]
+    }
+  ],
+  "language": "en"
+}
