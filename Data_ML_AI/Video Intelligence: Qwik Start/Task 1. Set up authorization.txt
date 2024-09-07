@@ -1,0 +1,28 @@
+Welcome to Cloud Shell! Type "help" to get started.
+Your Cloud Platform project in this session is set to qwiklabs-gcp-00-8c65dd27fc33.
+Use “gcloud config set project [PROJECT_ID]” to change to a different project.
+gcloud student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ gcloud auth list
+Credentialed Accounts
+
+ACTIVE: *
+ACCOUNT: student-02-4e0861f99f15@qwiklabs.net
+
+To set the active account, run:
+    $ gcloud config set account `ACCOUNT`
+
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ gcloud config list project
+[core]
+project = qwiklabs-gcp-00-8c65dd27fc33
+
+Your active configuration is: [cloudshell-29122]
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ gcloud iam service-accounts create quickstart
+Created service account [quickstart].
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ gcloud iam service-accounts keys create key.json --iam-account quickstart@<your-project-123>.iam.gserviceaccount.com
+-bash: your-project-123: No such file or directory
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ gcloud auth activate-service-account --key-file key.json
+ERROR: (gcloud.auth.activate-service-account) Unable to read file [key.json]: [Errno 2] No such file or directory: 'key.json'
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ gcloud iam service-accounts keys create key.json --iam-account quickstart@qwiklabs-gcp-00-8c65dd27fc33.iam.gserviceaccount.com
+created key [3ccd8a193b4123c20e2293bc7156de1238c5b8ad] of type [json] as [key.json] for [quickstart@qwiklabs-gcp-00-8c65dd27fc33.iam.gserviceaccount.com]
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ gcloud auth print-access-token
+ya29.a0AcM612zVITO0Hg8Hs_cnynrHseunIYLI3gVa9XMys5328NI5a99yaa4jpFLTZMxQNN-MhZDa0puFckEejwkY_NUFqKVmXUkHhqShOQiTldb0ux0MOscY7KhFv26f8AT-7Qa2ed5OXuLZObTla9Xk_YYBuAd0c5JNwDp1FVFIC-Xj6c2ZU3W1yrniha2n7c8zcBR0JLeCH5MCSUmJRvl9-NIxTCToBkKviX02egqvVTT-C12JjWxGgldrZZhRi3MKaUg212Q1DYJUBVybB6l-vR-8VcK0B4BDAwduWJRA_w3uUQmbHwa7WXq10XRemtncqPcPXpCzCnJ-FVNxfX-KdzuZ5-58WNNd-DWDJxarPBnFXS_qfdpukJM8maPV9HsCKyq4U61Urvro276tlrmApmsThyhuVuGjtMIaCgYKARgSARISFQHGX2MiuMbqYqI0L9_7hhyomdjskQ0426
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-00-8c65dd27fc33)$ 
