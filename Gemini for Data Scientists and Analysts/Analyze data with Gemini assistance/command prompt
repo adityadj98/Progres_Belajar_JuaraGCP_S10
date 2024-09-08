@@ -1,0 +1,120 @@
+Welcome to Cloud Shell! Type "help" to get started.
+Your Cloud Platform project in this session is set to qwiklabs-gcp-00-3bf9175fff86.
+Use “gcloud config set project [PROJECT_ID]” to change to a different project.
+gcloud auth liststudent_02_3445f110c29b@cloudshell:~ (qwiklabs-gcp-00-3bf9175fff86)$ gcloud auth list
+Credentialed Accounts
+
+ACTIVE: *
+ACCOUNT: student-02-3445f110c29b@qwiklabs.net
+
+To set the active account, run:
+    $ gcloud config set account `ACCOUNT`
+
+student_02_3445f110c29b@cloudshell:~ (qwiklabs-gcp-00-3bf9175fff86)$ gcloud config list project
+[core]
+project = qwiklabs-gcp-00-3bf9175fff86
+
+Your active configuration is: [cloudshell-2910]
+student_02_3445f110c29b@cloudshell:~ (qwiklabs-gcp-00-3bf9175fff86)$ PROJECT_ID=$(gcloud config get-value project)
+REGION=us-central1
+echo "PROJECT_ID=${PROJECT_ID}"
+echo "REGION=${REGION}"
+Your active configuration is: [cloudshell-2910]
+PROJECT_ID=qwiklabs-gcp-00-3bf9175fff86
+REGION=us-central1
+student_02_3445f110c29b@cloudshell:~ (qwiklabs-gcp-00-3bf9175fff86)$ USER=$(gcloud config get-value account 2> /dev/null)
+echo "USER=${USER}"
+USER=student-02-3445f110c29b@qwiklabs.net
+student_02_3445f110c29b@cloudshell:~ (qwiklabs-gcp-00-3bf9175fff86)$ gcloud services enable cloudaicompanion.googleapis.com --project ${PROJECT_ID}
+Operation "operations/acat.p2-852047696509-7f001c8c-d7dc-4325-8a88-26091961d821" finished successfully.
+student_02_3445f110c29b@cloudshell:~ (qwiklabs-gcp-00-3bf9175fff86)$ gcloud projects add-iam-policy-binding ${PROJECT_ID} --member user:${USER} --role=roles/cloudaicompanion.user
+gcloud projects add-iam-policy-binding ${PROJECT_ID} --member user:${USER} --role=roles/serviceusage.serviceUsageViewerUpdated IAM policy for project [qwiklabs-gcp-00-3bf9175fff86].
+bindings:
+- members:
+  - serviceAccount:qwiklabs-gcp-00-3bf9175fff86@qwiklabs-gcp-00-3bf9175fff86.iam.gserviceaccount.com
+  role: roles/bigquery.admin
+- members:
+  - user:student-02-3445f110c29b@qwiklabs.net
+  role: roles/cloudaicompanion.user
+- members:
+  - serviceAccount:852047696509@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-852047696509@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - serviceAccount:service-852047696509@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-852047696509@container-engine-robot.iam.gserviceaccount.com
+  role: roles/container.serviceAgent
+- members:
+  - serviceAccount:852047696509-compute@developer.gserviceaccount.com
+  - serviceAccount:852047696509@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - serviceAccount:service-852047696509@gcp-sa-notebooks.iam.gserviceaccount.com
+  role: roles/notebooks.serviceAgent
+- members:
+  - serviceAccount:admiral@qwiklabs-services-prod.iam.gserviceaccount.com
+  - serviceAccount:qwiklabs-gcp-00-3bf9175fff86@qwiklabs-gcp-00-3bf9175fff86.iam.gserviceaccount.com
+  - user:student-02-3445f110c29b@qwiklabs.net
+  role: roles/owner
+- members:
+  - serviceAccount:qwiklabs-gcp-00-3bf9175fff86@qwiklabs-gcp-00-3bf9175fff86.iam.gserviceaccount.com
+  role: roles/storage.admin
+- members:
+  - user:student-02-3445f110c29b@qwiklabs.net
+  role: roles/viewer
+- members:
+  - serviceAccount:service-852047696509@gcp-sa-websecurityscanner.iam.gserviceaccount.com
+  role: roles/websecurityscanner.serviceAgent
+etag: BwYhkZC0Kgk=
+version: 1
+Updated IAM policy for project [qwiklabs-gcp-00-3bf9175fff86].
+bindings:
+- members:
+  - serviceAccount:qwiklabs-gcp-00-3bf9175fff86@qwiklabs-gcp-00-3bf9175fff86.iam.gserviceaccount.com
+  role: roles/bigquery.admin
+- members:
+  - user:student-02-3445f110c29b@qwiklabs.net
+  role: roles/cloudaicompanion.user
+- members:
+  - serviceAccount:852047696509@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-852047696509@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - serviceAccount:service-852047696509@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-852047696509@container-engine-robot.iam.gserviceaccount.com
+  role: roles/container.serviceAgent
+- members:
+  - serviceAccount:852047696509-compute@developer.gserviceaccount.com
+  - serviceAccount:852047696509@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - serviceAccount:service-852047696509@gcp-sa-notebooks.iam.gserviceaccount.com
+  role: roles/notebooks.serviceAgent
+- members:
+  - serviceAccount:admiral@qwiklabs-services-prod.iam.gserviceaccount.com
+  - serviceAccount:qwiklabs-gcp-00-3bf9175fff86@qwiklabs-gcp-00-3bf9175fff86.iam.gserviceaccount.com
+  - user:student-02-3445f110c29b@qwiklabs.net
+  role: roles/owner
+- members:
+  - user:student-02-3445f110c29b@qwiklabs.net
+  role: roles/serviceusage.serviceUsageViewer
+- members:
+  - serviceAccount:qwiklabs-gcp-00-3bf9175fff86@qwiklabs-gcp-00-3bf9175fff86.iam.gserviceaccount.com
+  role: roles/storage.admin
+- members:
+  - user:student-02-3445f110c29b@qwiklabs.net
+  role: roles/viewer
+- members:
+  - serviceAccount:service-852047696509@gcp-sa-websecurityscanner.iam.gserviceaccount.com
+  role: roles/websecurityscanner.serviceAgent
+etag: BwYhkZD0Ivs=
+version: 1
+student_02_3445f110c29b@cloudshell:~ (qwiklabs-gcp-00-3bf9175fff86)$ 
