@@ -1,0 +1,11 @@
+(base) jupyter@instance-20240908-080609:~$ git clone --depth=1 https://github.com/GoogleCloudPlatform/training-data-analyst
+Cloning into 'training-data-analyst'...
+remote: Enumerating objects: 7704, done.
+remote: Counting objects: 100% (7704/7704), done.
+remote: Compressing objects: 100% (5208/5208), done.
+remote: Total 7704 (delta 2144), reused 5794 (delta 1539), pack-reused 0 (from 0)
+Receiving objects: 100% (7704/7704), 331.39 MiB | 17.11 MiB/s, done.
+Resolving deltas: 100% (2144/2144), done.
+Updating files: 100% (12879/12879), done.
+(base) jupyter@instance-20240908-080609:~$ 
+
