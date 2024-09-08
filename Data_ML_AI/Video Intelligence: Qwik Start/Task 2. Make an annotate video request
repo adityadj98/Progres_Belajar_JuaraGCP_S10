@@ -1,0 +1,55 @@
+Welcome to Cloud Shell! Type "help" to get started.
+Your Cloud Platform project in this session is set to qwiklabs-gcp-04-7220fe02fcbe.
+Use “gcloud config set project [PROJECT_ID]” to change to a different project.
+gcloud auth liststudent_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ gcloud auth list
+Credentialed Accounts
+
+ACTIVE: *
+ACCOUNT: student-02-4e0861f99f15@qwiklabs.net
+
+To set the active account, run:
+    $ gcloud config set account `ACCOUNT`
+
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ gcloud auth list
+Credentialed Accounts
+
+ACTIVE: *
+ACCOUNT: student-02-4e0861f99f15@qwiklabs.net
+
+To set the active account, run:
+    $ gcloud config set account `ACCOUNT`
+
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ gcloud config list project
+[core]
+project = qwiklabs-gcp-04-7220fe02fcbe
+
+Your active configuration is: [cloudshell-10782]
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ gcloud iam service-accounts create quickstart
+Created service account [quickstart].
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ gcloud iam service-accounts keys create key.json --iam-account quickstart@qwiklabs-gcp-04-7220fe02fcbe.iam.gserviceaccount.com
+created key [ba61f64e3cbe48b4682bd3b1c1bc7f883c44ee2d] of type [json] as [key.json] for [quickstart@qwiklabs-gcp-04-7220fe02fcbe.iam.gserviceaccount.com]
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ gcloud auth activate-service-account --key-file key.json
+Activated service account credentials for: [quickstart@qwiklabs-gcp-04-7220fe02fcbe.iam.gserviceaccount.com]
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ gcloud auth print-access-token
+ya29.c.c0ASRK0Gabt9PJWmAnR9MK1pzpo6txQsdg70subWHQ8MypSTUfvKjNppIC0fIJ0sK97w9EEJ--uDu6RAK--bb3CRT0rey7cgh034mldve0WSCUsHX0lsUyyiCtR5G9xrxz5UqR-seFUoMoroYs-fdxX4Mc-qfp4gJM6XAcKallpFnmJsUILEt1oddns1L8xlmhSKD6kvznAWZnPqkn4vWf_kHqbWXFUx2_uIg3px9yiNHjzGxoSk5HY4vXG-R7BOfReijaySGpKfKJ3HczwDvhFGHIwDfn9dIoQR6Rf336gr8YqLeg5tQdMJR1UmkRzOPAOFJ4niAU4NFH9wJuIn7VM07_VIOjvyn2yoc2wIcZJlTTxcPJDdyYjz5RCFYt4FuGhop7LwN399Pc5qV0-wFj8z1lz2BMtgfssc-Or-lvmmpknF-JMdfcjmSewkkXJpqFj36JawwJ9q-lqne73cFSinmaZc2M_iSv5cr8r4Rh3mhV-SMM0oqWXnF7947bXyWicoVOlSc182FauV_2n7eiF-daJWM5W-qIo0_v00idMZ3hgveop06prunUbUS_dkvwf8x9hSB1dub-ifQFl9O1QbnjfvqWsX5RoZmnf4c4FiMaOk2S00b9R5iu0wlcRkoFB8ZeQ0ydfrbScnMmo4coi5e3SqbpsUZ696wzskswcygwrZte-mnOyet0SI2ZIaZeSk1fFwsvx-lOnuM7x8XdXr3vzviUs4th7Q1rx1xrZa2ov0oZeJxqq3VcYxJpujZFbV7d376_vOv-8wFX0wgRtpvruYWiuvqgvesyUcOm0aIgkeoX_sfSk3ZF5ROtqlMu2lM4xOeYWlnuXjwhzf0Oso7w0sfe4kog0xU0Yv4Wex1bcfklVZ_wFQBQR773wxi8l29uB2yq6feuRXZsBXXqv0ZvnRsFgudMwS4oId04fd4MBnOVhrWBz-7p5YUtzrj1axUxzvul9Z2hIyliMIWoSl_9Xpf12ejexc045dj_eQ6o6Y87W4gyIml
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ cat > request.json <<EOF
+{
+   "inputUri":"gs://spls/gsp154/video/train.mp4",
+   "features": [
+       "LABEL_DETECTION"
+   ]
+}
+EOF
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ curl -s -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer '$(gcloud auth print-access-token)'' \
+    'https://videointelligence.googleapis.com/v1/videos:annotate' \
+    -d @request.json
+{
+  "name": "projects/413747177352/locations/asia-east1/operations/8285480272184305233"
+}
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ ^C
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ ^C
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ ^C
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ ^C
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ curl -s -H 'Content-Type: application/json' \ -H 'Authorization: Bearer '$(gcloud auth print-access-token)'' \ 'https://videointelligence.googleapis.com/v1/projects/413747177352/locations/asia-east1/operations/8285480272184305233'
+student_02_4e0861f99f15@cloudshell:~ (qwiklabs-gcp-04-7220fe02fcbe)$ 
