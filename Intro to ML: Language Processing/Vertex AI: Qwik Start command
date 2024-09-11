@@ -1,0 +1,327 @@
+
+Welcome to Cloud Shell! Type "help" to get started.
+Your Cloud Platform project in this session is set to qwiklabs-gcp-01-10629d59e5bb.
+Use “gcloud config set project [PROJECT_ID]” to change to a different project.
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud auth list
+Credentialed Accounts
+
+ACTIVE: *
+ACCOUNT: student-02-b55491a4b404@qwiklabs.net
+
+To set the active account, run:
+    $ gcloud config set account `ACCOUNT`
+
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud config list project
+[core]
+project = qwiklabs-gcp-01-10629d59e5bb
+
+Your active configuration is: [cloudshell-11617]
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud services enable \
+  compute.googleapis.com \
+  iam.googleapis.com \
+  iamcredentials.googleapis.com \
+  monitoring.googleapis.com \
+  logging.googleapis.com \
+  notebooks.googleapis.com \
+  aiplatform.googleapis.com \
+  bigquery.googleapis.com \
+  artifactregistry.googleapis.com \
+  cloudbuild.googleapis.com \
+  container.googleapis.com
+Operation "operations/acat.p2-1020792619130-49a5e774-6a9a-4417-9e55-19ec11644399" finished successfully.
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ PROJECT_ID=$(gcloud config get-value core/project) 
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com \
+    --role="roles/storage.admin"
+Your active configuration is: [cloudshell-11617]
+ERROR: Policy modification failed. For a binding with condition, run "gcloud alpha iam policies lint-condition" to identify issues in condition.
+ERROR: (gcloud.projects.add-iam-policy-binding) INVALID_ARGUMENT: Invalid service account (@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com).
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com \
+    --role="roles/bigquery.admin"
+ERROR: Policy modification failed. For a binding with condition, run "gcloud alpha iam policies lint-condition" to identify issues in condition.
+ERROR: (gcloud.projects.add-iam-policy-binding) INVALID_ARGUMENT: Invalid service account (@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com).
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud services enable \
+  compute.googleapis.com \
+  iam.googleapis.com \
+  iamcredentials.googleapis.com \
+  monitoring.googleapis.com \
+  logging.googleapis.com \
+  notebooks.googleapis.com \
+  aiplatform.googleapis.com \
+  bigquery.googleapis.com \
+  artifactregistry.googleapis.com \
+  cloudbuild.googleapis.com \
+  container.googleapis.com
+Operation "operations/acat.p2-1020792619130-cb3be1a7-d876-4e96-9161-1f5ffa8b49b3" finished successfully.
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ SERVICE_ACCOUNT_ID=vertex-custom-training-sa
+gcloud iam service-accounts create $SERVICE_ACCOUNT_ID  \
+    --description="A custom service account for Vertex custom training with Tensorboard" \
+    --display-name="Vertex AI Custom Training"
+Created service account [vertex-custom-training-sa].
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ PROJECT_ID=$(gcloud config get-value core/project) 
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com \
+    --role="roles/storage.admin"
+Your active configuration is: [cloudshell-11617]
+Updated IAM policy for project [qwiklabs-gcp-01-10629d59e5bb].
+bindings:
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/aiplatform.admin
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/bigquery.admin
+- members:
+  - serviceAccount:1020792619130@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@container-engine-robot.iam.gserviceaccount.com
+  role: roles/container.serviceAgent
+- members:
+  - serviceAccount:1020792619130-compute@developer.gserviceaccount.com
+  - serviceAccount:1020792619130@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-notebooks.iam.gserviceaccount.com
+  role: roles/notebooks.serviceAgent
+- members:
+  - serviceAccount:admiral@qwiklabs-services-prod.iam.gserviceaccount.com
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/owner
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/storage.admin
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/viewer
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-websecurityscanner.iam.gserviceaccount.com
+  role: roles/websecurityscanner.serviceAgent
+etag: BwYhzshedJo=
+version: 1
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com \
+    --role="roles/bigquery.admin"
+Updated IAM policy for project [qwiklabs-gcp-01-10629d59e5bb].
+bindings:
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/aiplatform.admin
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/bigquery.admin
+- members:
+  - serviceAccount:1020792619130@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@container-engine-robot.iam.gserviceaccount.com
+  role: roles/container.serviceAgent
+- members:
+  - serviceAccount:1020792619130-compute@developer.gserviceaccount.com
+  - serviceAccount:1020792619130@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-notebooks.iam.gserviceaccount.com
+  role: roles/notebooks.serviceAgent
+- members:
+  - serviceAccount:admiral@qwiklabs-services-prod.iam.gserviceaccount.com
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/owner
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/storage.admin
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/viewer
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-websecurityscanner.iam.gserviceaccount.com
+  role: roles/websecurityscanner.serviceAgent
+etag: BwYhzskk_YA=
+version: 1
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com \
+    --role="roles/bigquery.admin"
+Updated IAM policy for project [qwiklabs-gcp-01-10629d59e5bb].
+bindings:
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/aiplatform.admin
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/bigquery.admin
+- members:
+  - serviceAccount:1020792619130@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@container-engine-robot.iam.gserviceaccount.com
+  role: roles/container.serviceAgent
+- members:
+  - serviceAccount:1020792619130-compute@developer.gserviceaccount.com
+  - serviceAccount:1020792619130@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-notebooks.iam.gserviceaccount.com
+  role: roles/notebooks.serviceAgent
+- members:
+  - serviceAccount:admiral@qwiklabs-services-prod.iam.gserviceaccount.com
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/owner
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/storage.admin
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/viewer
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-websecurityscanner.iam.gserviceaccount.com
+  role: roles/websecurityscanner.serviceAgent
+etag: BwYhzsvlgaA=
+version: 1
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com \
+    --role="roles/aiplatform.user"
+Updated IAM policy for project [qwiklabs-gcp-01-10629d59e5bb].
+bindings:
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/aiplatform.admin
+- members:
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  role: roles/aiplatform.user
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/bigquery.admin
+- members:
+  - serviceAccount:1020792619130@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@container-engine-robot.iam.gserviceaccount.com
+  role: roles/container.serviceAgent
+- members:
+  - serviceAccount:1020792619130-compute@developer.gserviceaccount.com
+  - serviceAccount:1020792619130@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-notebooks.iam.gserviceaccount.com
+  role: roles/notebooks.serviceAgent
+- members:
+  - serviceAccount:admiral@qwiklabs-services-prod.iam.gserviceaccount.com
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/owner
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/storage.admin
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/viewer
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-websecurityscanner.iam.gserviceaccount.com
+  role: roles/websecurityscanner.serviceAgent
+etag: BwYhzsyiycs=
+version: 1
+student_02_b55491a4b404@cloudshell:~ (qwiklabs-gcp-01-10629d59e5bb)$ gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member=serviceAccount:$SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com \
+    --role="roles/aiplatform.user"
+Updated IAM policy for project [qwiklabs-gcp-01-10629d59e5bb].
+bindings:
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/aiplatform.admin
+- members:
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  role: roles/aiplatform.user
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/bigquery.admin
+- members:
+  - serviceAccount:1020792619130@cloudbuild.gserviceaccount.com
+  role: roles/cloudbuild.builds.builder
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-cloudbuild.iam.gserviceaccount.com
+  role: roles/cloudbuild.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@compute-system.iam.gserviceaccount.com
+  role: roles/compute.serviceAgent
+- members:
+  - serviceAccount:service-1020792619130@container-engine-robot.iam.gserviceaccount.com
+  role: roles/container.serviceAgent
+- members:
+  - serviceAccount:1020792619130-compute@developer.gserviceaccount.com
+  - serviceAccount:1020792619130@cloudservices.gserviceaccount.com
+  role: roles/editor
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/iam.serviceAccountUser
+- members:
+  - serviceAccount:service-1020792619130@gcp-sa-notebooks.iam.gserviceaccount.com
+  role: roles/notebooks.serviceAgent
+- members:
+  - serviceAccount:admiral@qwiklabs-services-prod.iam.gserviceaccount.com
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/owner
+- members:
+  - serviceAccount:qwiklabs-gcp-01-10629d59e5bb@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - serviceAccount:vertex-custom-training-sa@qwiklabs-gcp-01-10629d59e5bb.iam.gserviceaccount.com
+  - user:student-02-b55491a4b404@qwiklabs.net
+  role: roles/storage.admin
+- members:
+  - user:student-02-b55491a4b404@qwiklabs.net
