@@ -1,0 +1,142 @@
+student-01-2b92b16f2535@linux-instance:~$ axport API_KEY=AIzaSyDWqL0lV6KxMs-vwVQU-gfWq_GSLOgSfdo
+-bash: axport: command not found
+student-01-2b92b16f2535@linux-instance:~$ export API_KEY=AIzaSyDWqL0lV6KxMs-vwVQU-gfWq_GSLOgSfdo
+student-01-2b92b16f2535@linux-instance:~$ touch request.json
+student-01-2b92b16f2535@linux-instance:~$ {
+  "config": {
+      "encoding":"FLAC",
+      "languageCode": "en-US"
+  },
+  "audio": {
+      "uri":"gs://cloud-samples-data/speech/brooklyn_bridge.flac"
+  }
+}
+-bash: config:: command not found
+-bash: encoding:FLAC,: command not found
+-bash: languageCode:: command not found
+-bash: },: command not found
+-bash: audio:: command not found
+-bash: uri:gs://cloud-samples-data/speech/brooklyn_bridge.flac: No such file or directory
+-bash: syntax error near unexpected token `}'
+student-01-2b92b16f2535@linux-instance:~$ nano request.json
+student-01-2b92b16f2535@linux-instance:~$ curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json \
+"https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}" > result.json
+student-01-2b92b16f2535@linux-instance:~$ cat result.json
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "how old is the Brooklyn Bridge",
+          "confidence": 0.93497634
+        }
+      ],
+      "resultEndTime": "1.770s",
+      "languageCode": "en-us"
+    }
+  ],
+  "totalBilledTime": "2s",
+  "requestId": "7078760885305669770"
+}
+student-01-2b92b16f2535@linux-instance:~$  {
+  "config": {
+      "encoding":"FLAC",
+      "languageCode": "fr"
+  },
+  "audio": {
+      "uri":"gs://cloud-samples-data/speech/corbeau_renard.flac"
+  }
+}
+-bash: config:: command not found
+-bash: encoding:FLAC,: command not found
+-bash: languageCode:: command not found
+-bash: },: command not found
+-bash: audio:: command not found
+-bash: uri:gs://cloud-samples-data/speech/corbeau_renard.flac: No such file or directory
+-bash: syntax error near unexpected token `}'
+student-01-2b92b16f2535@linux-instance:~$ request.json
+-bash: request.json: command not found
+student-01-2b92b16f2535@linux-instance:~$ nano request.json
+
+
+Use "fg" to return to nano.
+
+[1]+  Stopped                 nano request.json
+student-01-2b92b16f2535@linux-instance:~$ nano request.json
+student-01-2b92b16f2535@linux-instance:~$ cat result.json
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "how old is the Brooklyn Bridge",
+          "confidence": 0.93497634
+        }
+      ],
+      "resultEndTime": "1.770s",
+      "languageCode": "en-us"
+    }
+  ],
+  "totalBilledTime": "2s",
+  "requestId": "7078760885305669770"
+}
+student-01-2b92b16f2535@linux-instance:~$ nano request.json
+student-01-2b92b16f2535@linux-instance:~$ cat result.json
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "how old is the Brooklyn Bridge",
+          "confidence": 0.93497634
+        }
+      ],
+      "resultEndTime": "1.770s",
+      "languageCode": "en-us"
+    }
+  ],
+  "totalBilledTime": "2s",
+  "requestId": "7078760885305669770"
+}
+student-01-2b92b16f2535@linux-instance:~$ nano request.jason
+student-01-2b92b16f2535@linux-instance:~$ cat result.json
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "how old is the Brooklyn Bridge",
+          "confidence": 0.93497634
+        }
+      ],
+      "resultEndTime": "1.770s",
+      "languageCode": "en-us"
+    }
+  ],
+  "totalBilledTime": "2s",
+  "requestId": "7078760885305669770"
+}
+student-01-2b92b16f2535@linux-instance:~$ request.json
+-bash: request.json: command not found
+student-01-2b92b16f2535@linux-instance:~$ nano request.json
+student-01-2b92b16f2535@linux-instance:~$ curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json \
+"https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}" > result.json
+student-01-2b92b16f2535@linux-instance:~$ cat result.json
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "maître corbeau sur un arbre perché tenait en son bec un fromage maître Renard par l'odeur alléché lui tint à peu près ce langage et bonjour monsieur du corbeau",
+          "confidence": 0.9039431
+        }
+      ],
+      "resultEndTime": "12.720s",
+      "languageCode": "fr-fr"
+    }
+  ],
+  "totalBilledTime": "13s",
+  "requestId": "5341464888303769468"
+}
+student-01-2b92b16f2535@linux-instance:~$ 
+
