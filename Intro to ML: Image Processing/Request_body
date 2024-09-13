@@ -1,0 +1,23 @@
+{
+  "requests": [
+    {
+      "features": [
+        {
+          "type": "LABEL_DETECTION"
+          
+        }
+        
+      ],
+      "image": {
+        "source": {
+          "imageUri": "gs://MY_BUCKET/demo-image.jpg"
+          
+        }
+        
+      }
+      
+    }
+    
+  ]
+  
+}
