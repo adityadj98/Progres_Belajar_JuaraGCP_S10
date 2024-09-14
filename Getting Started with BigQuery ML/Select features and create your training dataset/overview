@@ -1,0 +1,6 @@
+Google Analytics captures a wide variety of dimensions and measures about a user's visit on this ecommerce website. Browse the complete list of fields in the [UA] BigQuery Export schema documentation and then preview the demo dataset to find useful features that will help a machine learning model understand the relationship between data about a visitor's first time on your website and whether they will return and make a purchase.
+
+Your team decides to test whether these two fields are good inputs for your classification model:
+
+totals.bounces (whether the visitor left the website immediately)
+totals.timeOnSite (how long the visitor was on our website)
