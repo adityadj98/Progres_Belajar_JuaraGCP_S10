@@ -1,0 +1,95 @@
+Machine learning is a hot topic and believe it or not, you don't need to be an engineer or mathematician to know how it works.
+00:08
+In fact, if you're a business professional in a nontechnical role, this course is especially for you.
+00:14
+Hi, my name is Saman Javan, Lead Business Curriculum Developer at Google Cloud.
+00:19
+And this is Managing Machine Learning Projects with Google Cloud, formerly known as ML for business professionals.
+00:27
+As with all of our business courses, I've worked with some of the most brilliant minds at Google to bring you new content and an improved learning experience.
+00:35
+For this course in particular, I've worked with Priscilla Moraes who leads our portfolio of machine learning courses, and Barry Schmell, one of our lead instructors for GCP and GSuite.
+00:46
+Now, let's dive right into what the course covers.
+00:50
+We're in the course introduction right now, so let's move to what's covered in module 2.
+00:56
+In the second module, we'll explore the business value for using machine learning.
+01:01
+This is the why we're using machine learning in business.
+01:05
+Next, we'll define machine learning as a practice.
+01:08
+This module will provide the foundational vocabulary which is important, especially if you're planning on working with machine learning experts.
+01:16
+It will also give you a framework for breaking down an ML project.
+01:21
+In module 4, we'll look at how to build and evaluate ML models.
+01:26
+At this point, it will become clear that data plays a central role in your ability to successfully use ML.
+01:33
+We'll shift briefly in module 5 to discuss what it means to use ML responsibly and ethically.
+01:40
+In module 6, we'll return to everyday business where I'll teach you some common ways to discover ML use cases.
+01:47
+These methods will be applicable no matter what industry you're working in.
+01:51
+In module 7, I'll explain holistically how to manage ML projects successfully.
+01:57
+And finally, we'll close the course by offering additional resources for those of you who might be interested in continuing your learning beyond this course.
+02:08
+By the end of this course, I want you to gain a thorough understanding of how machine learning can be used to improve business processes and create new value.
+02:18
+We'll explores several examples of where machine learning has been used by other businesses, assess various ML use cases for their feasibility.
+02:28
+You'll learn throughout the course that not all ideas are solvable or ideal for ML.
+02:34
+Next, I want you to learn about the end-to-end process to carry out an ML project, including building, training and evaluating an ML model.
+02:44
+As part of the end-to-end process, you'LL learn how to define data characteristics and biases that affect the quality of ML models.
+02:53
+You'll learn to recognize key considerations for managing ML projects, including data strategy, governance and project teams.
+03:02
+And finally, you'll be able to put everything you've learned to create a custom ML use case that can meaningfully impact your business.
+03:10
+Let me also assure you of what we won't be covering.
+03:13
+We won't be building an actual machine learning model along with the associated cost plan.
+03:19
+This is not a programming class, so you're not expected to know how to code, do complex math or do analysis.
+03:28
+This is also not an in-depth course on Tensorflow that we do have some great training on that if you're interested.
+03:35
+Be sure to check out our training catalog at cloud.google.com/training.
+03:41
+We also won't be teaching you how to build data pipelines or select specific algorithms for your ML use case.
+03:48
+Ultimately, the goal of this course is to teach you enough about what machine learning is and
+03:52
+the steps in managing a machine learning project, so that you can work with a machine learning practitioner.
+03:59
+This is a non technical course.
+04:01
+What I want you to walk away with is knowing where to apply ML in your organization so that you can get the best return on your investment.
+04:10
+To support your learning, this course comes with several materials.
+04:15
+You'll find a PDF file containing a subset of slides used in this course.
+04:20
+I say subset because there are hundreds of slides and we've reduced them down to the key points in the course.
+04:27
+There are also greeted assessment questions per module.
+04:31
+We've provided worksheets for some of the modules in the course.
+04:35
+These are complementary to the training content and will help you to identify your own ML use case.
+04:42
+We also want you to be able to practice using a few tools that will help you gain
+04:45
+a more in-depth understanding of how machine learning works and where it could be valuable in a business.
+04:51
+You'll have an opportunity to use these tools with the hands-on-labs.
+04:55
+We'll cover the requirements to use the hands-on-lab later in the course when we first introduced them.
+05:00
+And with that, you're ready to begin the next module.
