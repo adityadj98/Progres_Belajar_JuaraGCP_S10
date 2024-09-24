@@ -1,3 +1,5 @@
+# This is test subject
+
 CREATE OR REPLACE MODEL `ecommerce.classification_model_2`
 OPTIONS
   (model_type='logistic_reg', input_label_cols = ['will_buy_on_return_visit']) AS
